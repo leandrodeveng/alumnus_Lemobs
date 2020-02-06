@@ -28,4 +28,17 @@ export class AlunoService {
     this.students.push(student);
     return student;
   }
+
+  updateStudent(id: number, studentDto: studentDto): Student {
+    const { nome, data_nascimento, cpf, nota } = studentDto;
+    
+    const student = this.getStudentById(id);
+    
+    student.nome = nome;
+    student.data_nascimento = data_nascimento;
+    student.cpf = cpf;
+    student.nota = nota;
+
+    return student;
+  }
 }
