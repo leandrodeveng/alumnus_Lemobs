@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { Student } from './aluno.model';
+import { studentDto } from './dto/create.aluno.dto';
 
 @Controller('aluno')
 export class AlunoController {
@@ -12,12 +13,7 @@ export class AlunoController {
   }
 
   @Post()
-  createStudents(
-    @Body('nome') nome: string,
-    @Body('data_nascimento') data_nascimento: string,
-    @Body('cpf') cpf: string,
-    @Body('nota') nota: number,
-  ): Student {
-    return this.alunoService.createStudent(nome, data_nascimento, cpf, nota);
+  createStudents(@Body() studentDto: studentDto): Student {
+    return this.alunoService.createStudent(studentDto);
   }
 }

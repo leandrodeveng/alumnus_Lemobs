@@ -1,16 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { Student } from './aluno.model';
 import * as uuid from 'uuid/v1';
+import { studentDto } from './dto/create.aluno.dto';
 
 @Injectable()
 export class AlunoService {
-  private students: Student[]
+  private students: Student[] = [];
 
   getAllStudents(): Student[] {
     return this.students;
   }
 
-  createStudent(nome: string, data_nascimento: string, cpf: string, nota: number): Student {
+  createStudent(studentDto: studentDto): Student {
+    const { nome, data_nascimento, cpf, nota } = studentDto;
+
     const student: Student = {
       id: uuid(),
       nome,
