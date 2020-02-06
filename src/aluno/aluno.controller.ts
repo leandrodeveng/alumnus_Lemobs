@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { Student } from './aluno.model';
 import { studentDto } from './dto/create.aluno.dto';
@@ -10,6 +10,11 @@ export class AlunoController {
   @Get()
   getAllStudents(): Student[] {
     return this.alunoService.getAllStudents();
+  }
+
+  @Get('/:id')
+  getStudentById(@Param('id') id:number): Student {
+    return this.alunoService.getStudentById(id);
   }
 
   @Post()

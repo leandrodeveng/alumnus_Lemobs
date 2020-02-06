@@ -11,6 +11,10 @@ export class AlunoService {
     return this.students;
   }
 
+  getStudentById(id: number ): Student {
+    return this.students.find(student => student.id === id);
+  }
+
   createStudent(studentDto: studentDto): Student {
     const { nome, data_nascimento, cpf, nota } = studentDto;
 
