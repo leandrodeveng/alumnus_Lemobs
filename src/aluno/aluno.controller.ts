@@ -16,13 +16,13 @@ export class AlunoController {
   getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);
   }
-/*
+
   @Post()
   @UsePipes(ValidationPipe)
-  createStudents(@Body() studentDto: studentDto): Student {
+  createStudents(@Body() studentDto: studentDto): Promise<Student> {
     return this.alunoService.createStudent(studentDto);
   }
-
+/*
   @Put('/:id')
   updateStudent(@Param('id') id: number, @Body() studentDto: studentDto): Student {
     return this.alunoService.updateStudent(id, studentDto);

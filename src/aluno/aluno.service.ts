@@ -23,23 +23,13 @@ export class AlunoService {
       throw new NotFoundException(`The student with id ${id} does not exists`);
     }
     return student
-    }
-/*  }
-
-  createStudent(studentDto: studentDto): Student {
-    const { nome, data_nascimento, cpf, nota } = studentDto;
-
-    const student: Student = {
-      id: uuid(),
-      nome,
-      data_nascimento,
-      cpf,
-      nota,
-    };
-    this.students.push(student);
-    return student;
   }
 
+
+  async createStudent(studentDto: studentDto): Promise<Student> {
+    return this.studentRepository.createStudent(studentDto);
+  }
+/*
   updateStudent(id: number, studentDto: studentDto): Student {
     const { nome, data_nascimento, cpf, nota } = studentDto;
     
