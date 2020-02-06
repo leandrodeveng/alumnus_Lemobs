@@ -1,22 +1,30 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Student } from './aluno.model';
-import * as uuid from 'uuid/v1';
 import { studentDto } from './dto/create.aluno.dto';
+import { StudentRepository } from './aluno.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Student } from './aluno.entity';
 
 @Injectable()
 export class AlunoService {
-
+  constructor (
+    @InjectRepository(StudentRepository)
+    private studentRepository: StudentRepository,
+  ) {}
+/*
   getAllStudents(): Student[] {
     return this.students;
   }
+*/
 
-  getStudentById(id: number ): Student {
-    const student = this.students.find(student => student.id === id);
+  async getStudentById(id: number ): Promise<Student> {
+    const student = await this.studentRepository.findOne(id);
+
     if(!student) {
       throw new NotFoundException(`The student with id ${id} does not exists`);
     }
     return student
-  }
+    }
+/*  }
 
   createStudent(studentDto: studentDto): Student {
     const { nome, data_nascimento, cpf, nota } = studentDto;
@@ -43,5 +51,5 @@ export class AlunoService {
     student.nota = nota;
 
     return student;
-  }
+  }*/
 }

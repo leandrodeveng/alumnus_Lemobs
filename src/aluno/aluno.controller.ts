@@ -1,22 +1,22 @@
-import { Controller, Get, Post, Body, Param, Put, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, UsePipes, ValidationPipe, ParseIntPipe } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
-import { Student } from './aluno.model';
 import { studentDto } from './dto/create.aluno.dto';
+import { Student } from './aluno.entity';
 
 @Controller('aluno')
 export class AlunoController {
   constructor (private alunoService: AlunoService) {}
-
+/*
   @Get()
   getAllStudents(): Student[] {
     return this.alunoService.getAllStudents();
   }
-
+*/
   @Get('/:id')
-  getStudentById(@Param('id') id:number): Student {
+  getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);
   }
-  
+/*
   @Post()
   @UsePipes(ValidationPipe)
   createStudents(@Body() studentDto: studentDto): Student {
@@ -26,6 +26,5 @@ export class AlunoController {
   @Put('/:id')
   updateStudent(@Param('id') id: number, @Body() studentDto: studentDto): Student {
     return this.alunoService.updateStudent(id, studentDto);
-  }
+  }*/
 }
-f
