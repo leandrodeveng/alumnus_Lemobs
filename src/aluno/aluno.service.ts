@@ -1,18 +1,21 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Student } from './aluno.model';
 import * as uuid from 'uuid/v1';
 import { studentDto } from './dto/create.aluno.dto';
 
 @Injectable()
 export class AlunoService {
-  private students: Student[] = [];
 
   getAllStudents(): Student[] {
     return this.students;
   }
 
   getStudentById(id: number ): Student {
-    return this.students.find(student => student.id === id);
+    const student = this.students.find(student => student.id === id);
+    if(!student) {
+      throw new NotFoundException(`The student with id ${id} does not exists`);
+    }
+    return student
   }
 
   createStudent(studentDto: studentDto): Student {

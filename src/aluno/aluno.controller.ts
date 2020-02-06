@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { Student } from './aluno.model';
 import { studentDto } from './dto/create.aluno.dto';
@@ -16,8 +16,9 @@ export class AlunoController {
   getStudentById(@Param('id') id:number): Student {
     return this.alunoService.getStudentById(id);
   }
-
+  
   @Post()
+  @UsePipes(ValidationPipe)
   createStudents(@Body() studentDto: studentDto): Student {
     return this.alunoService.createStudent(studentDto);
   }
@@ -27,3 +28,4 @@ export class AlunoController {
     return this.alunoService.updateStudent(id, studentDto);
   }
 }
+f
