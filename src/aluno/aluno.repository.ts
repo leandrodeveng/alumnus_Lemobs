@@ -18,3 +18,4 @@ export class StudentRepository extends Repository<Student> {
     return student;
   }
 }
+

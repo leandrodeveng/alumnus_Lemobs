@@ -22,9 +22,9 @@ export class AlunoController {
   createStudents(@Body() studentDto: studentDto): Promise<Student> {
     return this.alunoService.createStudent(studentDto);
   }
-/*
+
   @Put('/:id')
-  updateStudent(@Param('id') id: number, @Body() studentDto: studentDto): Student {
+  updateStudent(@Param('id', ParseIntPipe) id: number, @Body() studentDto: studentDto): Promise<Student> {
     return this.alunoService.updateStudent(id, studentDto);
-  }*/
+  }
 }

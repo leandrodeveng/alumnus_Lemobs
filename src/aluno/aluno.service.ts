@@ -29,17 +29,18 @@ export class AlunoService {
   async createStudent(studentDto: studentDto): Promise<Student> {
     return this.studentRepository.createStudent(studentDto);
   }
-/*
-  updateStudent(id: number, studentDto: studentDto): Student {
+
+  async updateStudent(id: number, studentDto: studentDto): Promise<Student> {
     const { nome, data_nascimento, cpf, nota } = studentDto;
     
-    const student = this.getStudentById(id);
+    const student = await this.getStudentById(id);
     
     student.nome = nome;
     student.data_nascimento = data_nascimento;
     student.cpf = cpf;
     student.nota = nota;
+    await student.save();
 
     return student;
-  }*/
+  }
 }
