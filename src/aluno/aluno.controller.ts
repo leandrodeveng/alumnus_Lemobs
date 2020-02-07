@@ -16,6 +16,12 @@ export class AlunoController {
   getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);
   }
+
+  @Get('/:nota/criterio/:criterio') 
+    studentCriteria(@Param('nota', ParseIntPipe) nota:number, @Param('criterio') criterio: string): Promise<Student[]> {
+      return this.alunoService.getStudentsByCriteria(nota, criterio);
+    }
+
   @Get()
   getAllStudents(): Promise<Student[]> {
     return this.alunoService.getAllStudents();

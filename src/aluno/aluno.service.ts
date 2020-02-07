@@ -15,7 +15,6 @@ export class AlunoService {
     return this.studentRepository.getAllStudents();
   }
 
-
   async getStudentById(id: number ): Promise<Student> {
     const student = await this.studentRepository.findOne(id);
 
@@ -35,6 +34,16 @@ export class AlunoService {
     return upperStudents
   }
 
+  async getStudentsByCriteria(nota: number, criterio:string): Promise<Student[]> {
+    const students = await this.getAllStudents();
+  
+    switch(criterio){
+      case ">":
+        return students.filter(student => student.nota > nota);
+      case "<":
+        return students.filter(student => student.nota < nota);
+    }
+  }
 
   async createStudent(studentDto: studentDto): Promise<Student> {
     return this.studentRepository.createStudent(studentDto);
