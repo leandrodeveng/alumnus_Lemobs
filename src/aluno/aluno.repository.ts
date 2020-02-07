@@ -5,6 +5,13 @@ import { studentDto } from "./dto/create.aluno.dto";
 
 @EntityRepository(Student)
 export class StudentRepository extends Repository<Student> {
+
+  async getAllStudents() {
+    const query = this.createQueryBuilder();
+    const students = await query.getMany();
+    return students;
+  }
+
   async createStudent(studentDto: studentDto): Promise<Student> {
     const { nome, data_nascimento, cpf, nota } = studentDto;
 
@@ -18,4 +25,3 @@ export class StudentRepository extends Repository<Student> {
     return student;
   }
 }
-

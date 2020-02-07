@@ -10,11 +10,11 @@ export class AlunoService {
     @InjectRepository(StudentRepository)
     private studentRepository: StudentRepository,
   ) {}
-/*
-  getAllStudents(): Student[] {
-    return this.students;
+
+  async getAllStudents(): Promise<Student[]> {
+    return this.studentRepository.getAllStudents();
   }
-*/
+
 
   async getStudentById(id: number ): Promise<Student> {
     const student = await this.studentRepository.findOne(id);

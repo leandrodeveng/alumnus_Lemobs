@@ -6,12 +6,12 @@ import { Student } from './aluno.entity';
 @Controller('aluno')
 export class AlunoController {
   constructor (private alunoService: AlunoService) {}
-/*
+
   @Get()
-  getAllStudents(): Student[] {
+  getAllStudents(): Promise<Student[]> {
     return this.alunoService.getAllStudents();
   }
-*/
+
   @Get('/:id')
   getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);
