@@ -11,23 +11,10 @@ export class AddressService {
     private addressRepository: AddressRepository){}
 
   getAllAddresses(): Promise<Address[]> {
-    return this.addressRepository.getAllAdresses();
+    return this.addressRepository.getAllAdresses();Address
   }
-/*
-  createAddress(addressDto: addressDto): Address {
-    const { rua, numero, complemento, bairro } = addressDto
 
-    const address = {
-      id: uuid(),
-      rua,
-      numero,
-      complemento,
-      bairro,
-      aluno_id: uuid()
-    }
-
-    this.addresses.push(address)
-
-    return address; 
-  }*/
+  createAddress(addressDto: addressDto): Promise<Address> {
+    return this.addressRepository.createAddress(addressDto);
+  }
 }

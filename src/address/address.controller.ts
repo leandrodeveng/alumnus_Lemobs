@@ -11,9 +11,9 @@ export class AddressController {
   getAddress(): Promise<Address[]> {
     return this.addressService.getAllAddresses()
   }
-/*
+
   @Post()
-  createAddress(@Body() addressDto: addressDto) {
+  createAddress(@Body() addressDto: addressDto): Promise<Address> {
     return this.addressService.createAddress(addressDto);
-  }*/
+  }
 }
