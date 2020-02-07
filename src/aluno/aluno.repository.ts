@@ -6,7 +6,7 @@ import { studentDto } from "./dto/create.aluno.dto";
 @EntityRepository(Student)
 export class StudentRepository extends Repository<Student> {
 
-  async getAllStudents() {
+  async getAllStudents(): Promise<Student[]> {
     const query = this.createQueryBuilder();
     const students = await query.getMany();
     return students;

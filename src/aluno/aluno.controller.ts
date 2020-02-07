@@ -7,14 +7,18 @@ import { Student } from './aluno.entity';
 export class AlunoController {
   constructor (private alunoService: AlunoService) {}
 
-  @Get()
-  getAllStudents(): Promise<Student[]> {
-    return this.alunoService.getAllStudents();
+  @Get('avg')
+  findAll(): Promise<Student[]> {
+    return this.alunoService.getUpperStudents();
   }
 
   @Get('/:id')
   getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);
+  }
+  @Get()
+  getAllStudents(): Promise<Student[]> {
+    return this.alunoService.getAllStudents();
   }
 
   @Post()

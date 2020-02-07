@@ -5,7 +5,7 @@ import { addressDto } from './dto/create.address.dto';
 @Controller('address')
 export class AddressController {
   constructor(private addressService: AddressService) {}
-
+/*
   @Get()
   getAddress() {
     return this.addressService.getAddress()
@@ -14,5 +14,5 @@ export class AddressController {
   @Post()
   createAddress(@Body() addressDto: addressDto) {
     return this.addressService.createAddress(addressDto);
-  }
+  }*/
 }

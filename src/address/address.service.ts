@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Address } from './address.model';
 import { addressDto } from './dto/create.address.dto';
-import * as uuid from 'uuid/v1';
+import { AddressRepository } from './address.repository';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class AddressService {
-  private addresses: Address[] = [];
-
+  constructor(
+    @InjectRepository(AddressRepository)
+    private addressRepository: AddressRepository){}
+/*
   getAddress(): Address[] {
     return this.addresses;
   }
@@ -26,5 +28,5 @@ export class AddressService {
     this.addresses.push(address)
 
     return address; 
-  }
+  }*/
 }

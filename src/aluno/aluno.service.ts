@@ -25,6 +25,16 @@ export class AlunoService {
     return student
   }
 
+  async getUpperStudents(): Promise<Student[]> {
+    const students = await this.getAllStudents();
+
+    const avgStudents = students.reduce((total,next) => total + next.nota, 0)/students.length;
+
+    const upperStudents = students.filter(student => student.nota > avgStudents)
+    
+    return upperStudents
+  }
+
 
   async createStudent(studentDto: studentDto): Promise<Student> {
     return this.studentRepository.createStudent(studentDto);
