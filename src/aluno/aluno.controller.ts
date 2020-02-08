@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Param, Put, UsePipes, ValidationPipe, Pars
 import { AlunoService } from './aluno.service';
 import { studentDto } from './dto/create.aluno.dto';
 import { Student } from './aluno.entity';
+import { IsString } from 'class-validator';
 
 @Controller('aluno')
 export class AlunoController {
@@ -34,7 +35,7 @@ export class AlunoController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  createStudents(@Body() studentDto: studentDto): Promise<Student> {
+  createStudents(@Body(ValidationPipe) studentDto: studentDto): Promise<Student> {
     return this.alunoService.createStudent(studentDto);
   }
 

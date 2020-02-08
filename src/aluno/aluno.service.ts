@@ -35,6 +35,10 @@ export class AlunoService {
   }
 
   async getStudentsByCriteria(nota: number, criterio:string): Promise<Student[]> {
+    if(criterio !== '>' && criterio !== '<') {
+      throw new NotFoundException(`The criteria must be > or <`);
+    }
+
     const students = await this.getAllStudents();
   
     switch(criterio){
