@@ -12,6 +12,11 @@ export class AlunoController {
     return this.alunoService.getUpperStudents();
   }
 
+  @Get('/:aluno_id/endereco')
+  getStudentsAddresses(@Param('aluno_id', ParseIntPipe) aluno_id: number) {
+    return this.alunoService.getStudentAddresses(aluno_id)
+  }
+
   @Get('/:id')
   getStudentById(@Param('id', ParseIntPipe) id:number): Promise<Student> {
     return this.alunoService.getStudentById(id);

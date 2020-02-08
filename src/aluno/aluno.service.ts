@@ -45,6 +45,24 @@ export class AlunoService {
     }
   }
 
+  async getStudentAddresses(aluno_id: number) {
+    const student = await this.getStudentById(aluno_id);
+
+    const studentAddresses = student.addresses.map(address => ({
+      endereco: `Rua ${address.rua}, ${address.numero}, ${address.complemeto}`,
+      bairro: `${address.bairro}`
+    }))
+
+    const total = student.addresses.length;
+
+    const addresses = {
+      total,
+      studentAddresses,
+    }
+    
+    return addresses
+  }
+
   async createStudent(studentDto: studentDto): Promise<Student> {
     return this.studentRepository.createStudent(studentDto);
   }
