@@ -1,7 +1,8 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany, Unique } from "typeorm";
 import { Address } from "src/address/address.entity";
 
 @Entity()
+@Unique(['cpf'])
 export class Student extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;

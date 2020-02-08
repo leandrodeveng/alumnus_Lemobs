@@ -1,6 +1,7 @@
 import { Repository, EntityRepository } from "typeorm";
 import { Student } from "./aluno.entity";
 import { studentDto } from "./dto/create.aluno.dto";
+import { ConflictException, InternalServerErrorException } from "@nestjs/common";
 
 
 @EntityRepository(Student)
@@ -20,7 +21,16 @@ export class StudentRepository extends Repository<Student> {
     student.data_nascimento = data_nascimento;
     student.cpf = cpf;
     student.nota = nota;
-    await student.save()
+
+    try {
+      await student.save();
+    } catch(error) {
+      if(error.code === '23505') {
+        throw new ConflictException('The student already exists');
+      } else {
+        throw new InternalServerErrorException();
+      }
+    } 
 
     return student;
   }
