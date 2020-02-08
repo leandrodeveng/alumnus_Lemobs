@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { AddressService } from './address.service';
 import { addressDto } from './dto/create.address.dto';
 import { Address } from './address.entity';
+import { Student } from 'src/aluno/aluno.entity';
 
 @Controller('address')
 export class AddressController {
@@ -12,8 +13,11 @@ export class AddressController {
     return this.addressService.getAllAddresses()
   }
 
-  @Post()
-  createAddress(@Body() addressDto: addressDto): Promise<Address> {
-    return this.addressService.createAddress(addressDto);
+  @Post('/:aluno_id')
+  createAddress(
+    @Param('aluno_id') aluno_id:Student,
+    @Body() addressDto: addressDto): Promise<Address> 
+  {
+    return this.addressService.createAddress(addressDto, aluno_id);
   }
 }

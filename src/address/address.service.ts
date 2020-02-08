@@ -3,6 +3,7 @@ import { addressDto } from './dto/create.address.dto';
 import { AddressRepository } from './address.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Address } from './address.entity';
+import { Student } from 'src/aluno/aluno.entity';
 
 @Injectable()
 export class AddressService {
@@ -14,7 +15,7 @@ export class AddressService {
     return this.addressRepository.getAllAdresses();Address
   }
 
-  createAddress(addressDto: addressDto): Promise<Address> {
-    return this.addressRepository.createAddress(addressDto);
+  createAddress(addressDto: addressDto, aluno_id: Student): Promise<Address> {
+    return this.addressRepository.createAddress(addressDto, aluno_id);
   }
 }

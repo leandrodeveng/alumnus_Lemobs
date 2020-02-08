@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Address } from "src/address/address.entity";
 
 @Entity()
 export class Student extends BaseEntity {
@@ -16,4 +17,8 @@ export class Student extends BaseEntity {
 
   @Column()
   nota: number;
+
+  @OneToMany(type => Address, address => address.aluno_id, { eager: true })
+  addresses: Address[];
+
 }
