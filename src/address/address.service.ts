@@ -4,6 +4,7 @@ import { AddressRepository } from './address.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Address } from './address.entity';
 import { Student } from 'src/aluno/aluno.entity';
+import { getNeighborhoodFilterDto } from './dto/get.neighborhood.filter.dto';
 
 @Injectable()
 export class AddressService {
@@ -11,8 +12,8 @@ export class AddressService {
     @InjectRepository(AddressRepository)
     private addressRepository: AddressRepository){}
 
-  getAllAddresses(): Promise<Address[]> {
-    return this.addressRepository.getAllAdresses();Address
+  getAddresses(filterNeighborhoodDto: getNeighborhoodFilterDto): Promise<Address[]> {
+    return this.addressRepository.getAdresses(filterNeighborhoodDto);
   }
 
   createAddress(addressDto: addressDto, aluno_id: Student): Promise<Address> {
