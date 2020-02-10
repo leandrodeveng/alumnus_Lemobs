@@ -21,5 +21,4 @@ export class Student extends BaseEntity {
 
   @OneToMany(type => Address, address => address.aluno_id, { eager: true })
   addresses: Address[];
-
 }

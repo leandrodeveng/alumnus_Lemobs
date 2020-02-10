@@ -10,6 +10,7 @@ export class StudentRepository extends Repository<Student> {
   async getAllStudents(): Promise<Student[]> {
     const query = this.createQueryBuilder();
     const students = await query.getMany();
+
     return students;
   }
 
@@ -31,7 +32,6 @@ export class StudentRepository extends Repository<Student> {
         throw new InternalServerErrorException();
       }
     } 
-
     return student;
   }
 }

@@ -12,7 +12,17 @@ export class AlunoService {
   ) {}
 
   async getAllStudents(): Promise<Student[]> {
-    return this.studentRepository.getAllStudents();
+    const students = await this.studentRepository.getAllStudents();
+
+    const formattedStudent = students.map(student => ({
+      ...student,
+      cpf: student.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, 
+      function( regex, ex1, ex2, ex3, ex4 ) {
+        return ex1 + '.' + ex2 + '.' + ex3 + '-' + ex4;
+      })} as Student)
+    )
+
+    return formattedStudent
   }
 
   async getStudentById(id: number ): Promise<Student> {
@@ -21,6 +31,12 @@ export class AlunoService {
     if(!student) {
       throw new NotFoundException(`The student with id ${id} does not exists`);
     }
+
+    student.cpf = student.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, 
+    function( regex, ex1, ex2, ex3, ex4 ) {
+      return ex1 + '.' + ex2 + '.' + ex3 + '-' + ex4;
+    })
+
     return student
   }
 
