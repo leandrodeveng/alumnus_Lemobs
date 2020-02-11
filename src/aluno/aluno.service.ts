@@ -3,6 +3,8 @@ import { studentDto } from './dto/create.aluno.dto';
 import { StudentRepository } from './aluno.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from './aluno.entity';
+import { BadRequestException } from "@nestjs/common";
+import { validate } from '../utils/validate.cpf';
 
 @Injectable()
 export class AlunoService {
@@ -84,6 +86,11 @@ export class AlunoService {
   }
 
   async createStudent(studentDto: studentDto): Promise<Student> {
+    const cpfValidate = validate(studentDto.cpf);
+
+    if(!cpfValidate) {
+      throw new BadRequestException('Invalid cpf');
+    }
     return this.studentRepository.createStudent(studentDto);
   }
 
