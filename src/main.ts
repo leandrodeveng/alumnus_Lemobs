@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
   .setTitle('Alumnus')
-  .setDescription('API Lemobs')
+  .setDescription('Etapa de Avaliação Prática Lemobs - API - Node.js')
   .setVersion('1.0')
   .build();
 
