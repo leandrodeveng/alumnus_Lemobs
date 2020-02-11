@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Param, Query, ParseIntPipe } from '@nestjs
 import { AddressService } from './address.service';
 import { addressDto } from './dto/create.address.dto';
 import { Address } from './address.entity';
-import { Student } from 'src/aluno/aluno.entity';
 import { getNeighborhoodFilterDto } from './dto/get.neighborhood.filter.dto';
+import { Student } from 'src/aluno/aluno.entity';
 
 @Controller('address')
 export class AddressController {
@@ -16,7 +16,7 @@ export class AddressController {
 
   @Post()
   createAddress(
-    @Query('aluno_id', ParseIntPipe) aluno_id:Student,
+    @Query('aluno_id', ParseIntPipe) aluno_id: Student,
     @Body() addressDto: addressDto): Promise<Address> 
   {
     return this.addressService.createAddress(addressDto, aluno_id);

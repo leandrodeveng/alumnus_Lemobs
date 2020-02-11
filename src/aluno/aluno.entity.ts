@@ -11,7 +11,7 @@ export class Student extends BaseEntity {
   nome: string;
 
   @Column()
-  data_nascimento: string;
+  data_nascimento: Date;
 
   @Column()
   cpf: string;

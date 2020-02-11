@@ -1,8 +1,8 @@
 import { Repository, EntityRepository } from "typeorm";
 import { Student } from "./aluno.entity";
-import { studentDto } from "./dto/create.aluno.dto";
+import { studentDto } from "./dto/student.dto";
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
-
+import { formatedDate } from '../utils/formatDate';
 
 @EntityRepository(Student)
 export class StudentRepository extends Repository<Student> {
@@ -19,7 +19,7 @@ export class StudentRepository extends Repository<Student> {
 
     const student = new Student();
     student.nome = nome;
-    student.data_nascimento = data_nascimento;
+    student.data_nascimento = formatedDate(data_nascimento);
     student.cpf = cpf;
     student.nota = nota;
 
@@ -31,7 +31,7 @@ export class StudentRepository extends Repository<Student> {
       } else {
         throw new InternalServerErrorException();
       }
-    } 
+    }
     return student;
   }
 }

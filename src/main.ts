@@ -9,7 +9,6 @@ async function bootstrap() {
   .setTitle('Alumnus')
   .setDescription('API Lemobs')
   .setVersion('1.0')
-  .addTag('Alumnus')
   .build();
 
   const document = SwaggerModule.createDocument(app, options);

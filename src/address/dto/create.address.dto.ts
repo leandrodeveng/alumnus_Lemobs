@@ -1,15 +1,15 @@
 import { IsNotEmpty } from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 export class addressDto {
   @ApiProperty()
   @IsNotEmpty()
   rua: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   numero: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   complemento: string;
 
   @ApiProperty()

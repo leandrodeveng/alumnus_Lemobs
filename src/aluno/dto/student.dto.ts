@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, Length } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, Length, IsDate, IsDateString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class studentDto {
@@ -9,7 +9,8 @@ export class studentDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  data_nascimento: string;
+  @IsString()
+  data_nascimento: String;
   
   @ApiProperty()
   @IsString()

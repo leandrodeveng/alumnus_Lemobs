@@ -1,8 +1,7 @@
 import { Controller, Get, Post, Body, Param, Put, UsePipes, ValidationPipe, ParseIntPipe } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
-import { studentDto } from './dto/create.aluno.dto';
+import { studentDto } from './dto/student.dto';
 import { Student } from './aluno.entity';
-import { IsString } from 'class-validator';
 
 @Controller('aluno')
 export class AlunoController {

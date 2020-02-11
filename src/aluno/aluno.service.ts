@@ -1,10 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { studentDto } from './dto/create.aluno.dto';
+import { studentDto } from './dto/student.dto';
 import { StudentRepository } from './aluno.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from './aluno.entity';
-import { BadRequestException } from "@nestjs/common";
+import { BadRequestException, ConflictException, InternalServerErrorException } from "@nestjs/common";
 import { validate } from '../utils/validate.cpf';
+import { formatedDate } from '../utils/formatDate';
 
 @Injectable()
 export class AlunoService {
@@ -97,14 +98,28 @@ export class AlunoService {
   async updateStudent(id: number, studentDto: studentDto): Promise<Student> {
     const { nome, data_nascimento, cpf, nota } = studentDto;
     
+    const cpfValidate = validate(cpf);
+
+    if(!cpfValidate) {
+      throw new BadRequestException('Invalid cpf');
+    }
+
     const student = await this.getStudentById(id);
     
     student.nome = nome;
-    student.data_nascimento = data_nascimento;
+    student.data_nascimento = formatedDate(data_nascimento);
     student.cpf = cpf;
     student.nota = nota;
-    await student.save();
 
+    try {
+      await student.save();
+    } catch(error) {
+      if(error.code === '23505') {
+        throw new ConflictException('The student already exists');
+      } else {
+        throw new InternalServerErrorException();
+      }
+    }
     return student;
   }
 }
