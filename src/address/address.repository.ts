@@ -20,8 +20,9 @@ export class AddressRepository extends Repository<Address> {
     return addresses
   }
 
-  async createAddress(addressDto: addressDto, aluno_id: studentIdDto): Promise<Address> {
+  async createAddress(addressDto: addressDto, studentIdDto: studentIdDto): Promise<Address> {
     const { rua, numero, complemento, bairro } = addressDto;
+    const { aluno_id } = studentIdDto;
     
     const address = new Address();
     

@@ -20,6 +20,6 @@ export class Address extends BaseEntity {
   bairro: string;
 
   @ManyToOne(type => Student, student => student.addresses, { eager: false })
-  aluno_id: studentIdDto;
+  aluno_id: number;
 
 }

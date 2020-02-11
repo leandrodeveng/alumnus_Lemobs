@@ -25,9 +25,9 @@ export class AddressController {
   })
   @Post()
   createAddress(
-    @Query('aluno_id', ParseIntPipe) aluno_id: studentIdDto,
+    @Query() studentIdDto: studentIdDto,
     @Body() addressDto: addressDto): Promise<Address> 
   {
-    return this.addressService.createAddress(addressDto, aluno_id);
+    return this.addressService.createAddress(addressDto, studentIdDto);
   }
 }

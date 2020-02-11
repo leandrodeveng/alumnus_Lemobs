@@ -3,7 +3,6 @@ import { addressDto } from './dto/create.address.dto';
 import { AddressRepository } from './address.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Address } from './address.entity';
-import { Student } from 'src/aluno/aluno.entity';
 import { getNeighborhoodFilterDto } from './dto/get.neighborhood.filter.dto';
 import { studentIdDto } from './dto/student.id.dto';
 
@@ -17,7 +16,7 @@ export class AddressService {
     return this.addressRepository.getAdresses(filterNeighborhoodDto);
   }
 
-  createAddress(addressDto: addressDto, aluno_id: studentIdDto): Promise<Address> {
-    return this.addressRepository.createAddress(addressDto, aluno_id);
+  createAddress(addressDto: addressDto, studentIdDto: studentIdDto): Promise<Address> {
+    return this.addressRepository.createAddress(addressDto, studentIdDto);
   }
 }
