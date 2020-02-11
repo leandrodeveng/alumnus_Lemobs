@@ -1,7 +1,7 @@
 import { Repository, EntityRepository } from "typeorm";
 import { Address } from "./address.entity";
 import { addressDto } from "./dto/create.address.dto";
-import { Student } from "src/aluno/aluno.entity";
+import { studentIdDto } from "./dto/student.id.dto";
 
 @EntityRepository(Address)
 export class AddressRepository extends Repository<Address> {
@@ -20,7 +20,7 @@ export class AddressRepository extends Repository<Address> {
     return addresses
   }
 
-  async createAddress(addressDto: addressDto, aluno_id: Student): Promise<Address> {
+  async createAddress(addressDto: addressDto, aluno_id: studentIdDto): Promise<Address> {
     const { rua, numero, complemento, bairro } = addressDto;
     
     const address = new Address();

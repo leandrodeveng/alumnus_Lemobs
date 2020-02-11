@@ -1,5 +1,6 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Student } from "src/aluno/aluno.entity";
+import { studentIdDto } from "./dto/student.id.dto";
 
 @Entity()
 export class Address extends BaseEntity {
@@ -19,6 +20,6 @@ export class Address extends BaseEntity {
   bairro: string;
 
   @ManyToOne(type => Student, student => student.addresses, { eager: false })
-  aluno_id: Student;
+  aluno_id: studentIdDto;
 
 }

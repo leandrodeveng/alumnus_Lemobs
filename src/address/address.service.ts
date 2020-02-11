@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Address } from './address.entity';
 import { Student } from 'src/aluno/aluno.entity';
 import { getNeighborhoodFilterDto } from './dto/get.neighborhood.filter.dto';
+import { studentIdDto } from './dto/student.id.dto';
 
 @Injectable()
 export class AddressService {
@@ -16,7 +17,7 @@ export class AddressService {
     return this.addressRepository.getAdresses(filterNeighborhoodDto);
   }
 
-  createAddress(addressDto: addressDto, aluno_id: Student): Promise<Address> {
+  createAddress(addressDto: addressDto, aluno_id: studentIdDto): Promise<Address> {
     return this.addressRepository.createAddress(addressDto, aluno_id);
   }
 }
