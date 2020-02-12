@@ -1,6 +1,6 @@
 # Alumnus_Lemobs
 
-Resultado do Desafio fase parte 2 Lemobs
+Resultado do Desafio da fase 2 Lemobs
 
 ### Pré-requisitos
 
