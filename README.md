@@ -9,11 +9,6 @@ Ambiente Node.js configurado
 ```
 https://nodejs.org/en/docs/guides/
 ```
-Framework nestjs instalado
-
-```
-https://docs.nestjs.com/
-```
 Banco de Dados PostgreSQL instalado. (Também é possível utilizar uma imagem do Postgre para criar um container com o Docker)
 ```
 https://www.postgresql.org/
@@ -21,16 +16,6 @@ https://www.postgresql.org/
 ```
 https://hub.docker.com/_/postgres
 ```
-
-TypeORM instalado e configurado
-```
-https://typeorm.io/#/
-```
-OpenAPI Swagger Instalado
-```
-https://docs.nestjs.com/recipes/swagger
-```
-
 
 ### Serviços Implementados
 Criação de banco de dados relacional utilizando PostgreSQL + typeORM + Docker
