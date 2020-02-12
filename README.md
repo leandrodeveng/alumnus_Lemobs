@@ -26,6 +26,11 @@ TypeORM instalado e configurado
 ```
 https://typeorm.io/#/
 ```
+OpenAPI Swagger Instalado
+```
+https://docs.nestjs.com/recipes/swagger
+```
+
 
 ### Serviços Implementados
 Criação de banco de dados relacional utilizando PostgreSQL + typeORM + Docker
@@ -50,3 +55,16 @@ Implamentação de serviço /aluno/media (GET) para retornar os dados de todos o
 Implamentação de serviço /endereco (POST) para cadastrar um novo endereço;
 
 Implamentação de serviço /endereco (GET) para retornar dados de todos os endereços;
+
+### Tarefas Bônus Desenvolvidas
+★ Versionamento de código no GitHub;
+
+★ Verificação de usuário no banco de dados antes de cadastrá-lo;
+
+★ Validação de CPF;
+
+★ Formatação de CPF nos retornos da API;
+
+★ Filtro por bairro no serviço de retornar todos os endereços - “/endereco (GET)”;
+
+★ Utilização do ORM TypeORM;
