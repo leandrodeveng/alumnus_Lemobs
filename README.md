@@ -9,7 +9,7 @@ Ambiente Node.js configurado
 ```
 https://nodejs.org/en/docs/guides/
 ```
-Framework nestjs configurado
+Framework nestjs instalado
 
 ```
 https://docs.nestjs.com/
