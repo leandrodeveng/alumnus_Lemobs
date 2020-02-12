@@ -14,7 +14,7 @@ Framework nestjs configurado
 ```
 https://docs.nestjs.com/
 ```
-Banco de Dados PostgresSQL instalado. (Também é possível utilizar uma imagem do Postgres para criar um container com o Docker)
+Banco de Dados PostgreSQL instalado. (Também é possível utilizar uma imagem do Postgre para criar um container com o Docker)
 ```
 https://www.postgresql.org/
 ```
